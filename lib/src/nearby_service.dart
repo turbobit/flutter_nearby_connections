@@ -113,8 +113,12 @@ class NearbyService {
   /// The [startAdvertisingPeer] publishes an advertisement for a specific service
   /// that your app provides through the flutter_nearby_connections plugin and
   /// notifies its delegate about invitations from nearby peers.
-  FutureOr<dynamic> startAdvertisingPeer() async {
-    await _channel.invokeMethod(_startAdvertisingPeer);
+  FutureOr<dynamic> startAdvertisingPeer({String? deviceName}) async {
+    await _channel.invokeMethod(_startAdvertisingPeer,
+      <String, dynamic>{
+        'deviceName': deviceName ?? "",
+      },
+    );
   }
 
   /// Starts browsing for peers.

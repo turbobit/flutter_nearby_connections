@@ -52,7 +52,7 @@ class NearbyService : Service() {
     }
 
     fun startAdvertising(strategy: Strategy, deviceName: String) {
-        Log.d(TAG, "startAdvertising()")
+        Log.d(TAG, "startAdvertising($strategy, $deviceName)")
         connectionsClient.startAdvertising(
             deviceName, SERVICE_ID, callbackUtils.connectionLifecycleCallback,
             AdvertisingOptions.Builder().setStrategy(strategy).build()
@@ -60,7 +60,7 @@ class NearbyService : Service() {
     }
 
     fun startDiscovery(strategy: Strategy) {
-        Log.d(TAG, "startDiscovery()")
+        Log.d(TAG, "startDiscovery($strategy)")
         connectionsClient.startDiscovery(
             SERVICE_ID, callbackUtils.endpointDiscoveryCallback,
             DiscoveryOptions.Builder().setStrategy(strategy).build()
